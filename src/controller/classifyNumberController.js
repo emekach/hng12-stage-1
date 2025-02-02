@@ -12,14 +12,11 @@ const { getFunFact } = require('./../helper/getFunFact');
 exports.classifyNumber = catchAsync(async (req, res, next) => {
   const { number } = req.query;
 
-  if (!number || !/^-?\d+$/.test(number)) {
-    return res.status(400).json({
-      number: number || 'null',
-      error: true,
-    });
+  if (!number || isNaN(number) || !Number.isInteger(Number(number))) {
+    return res.status(400).json({ number: num, error: true });
   }
 
-  const num = parseInt(number, 10);
+  const num = parseInt(number);
 
   // Calculate properties
   const prime = isPrime(num);

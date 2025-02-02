@@ -1,39 +1,38 @@
 exports.isPrime = (num) => {
-  if (num < 2) return false;
-  for (let i = 2; i <= Math.sqrt(num); i++) {
-    if (num % i === 0) return false;
+  if (n < 2) return false;
+  for (let i = 2; i * i <= n; i++) {
+    if (n % i === 0) return false;
   }
   return true;
 };
 
 exports.isPerfect = (num) => {
-  if (num < 2) return false;
+  if (n <= 1) return false;
+
   let sum = 1;
-  for (let i = 2; i <= Math.sqrt(num); i++) {
-    if (num % i === 0) {
+
+  for (let i = 2; i * i <= n; i++) {
+    if (n % i === 0) {
       sum += i;
-      if (i !== num / i) sum += num / i;
+      if (i !== n / i) {
+        sum += n / i;
+      }
     }
   }
-  return sum === num;
+
+  return sum === n;
 };
 
 exports.isArmstrong = (num) => {
-  const digits = String(num).split('');
+  const digits = num.toString().split('').map(Number);
   const power = digits.length;
-  const sum = digits.reduce(
-    (acc, digit) => acc + Math.pow(Number(digit), power),
-    0
-  );
+  const sum = digits.reduce((acc, digit) => acc + Math.pow(digit, power), 0);
   return sum === num;
 };
 
 exports.getDigitSum = (num) => {
-  return String(num)
+  return num
+    .toString()
     .split('')
-    .reduce((acc, digit) => acc + Number(digit), 0);
-};
-
-exports.isValidNumber = (num) => {
-  return !isNaN(num) && Number.isInteger(parseFloat(num));
+    .reduce((sum, d) => sum + Number(d), 0);
 };
