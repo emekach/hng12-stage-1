@@ -52,6 +52,12 @@ npm start
    http://localhost:3000/api/classify-number?number=<your-number>
    ```
 
+   **Live Url
+
+   ```
+   https://hng12-internship-task-one-fb501fa030a4.herokuapp.com/api/classify-number?number=371
+   ```
+
 ## API Endpoints
 
 ### `GET /api/classify-number?number=<number>`
