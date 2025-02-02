@@ -10,13 +10,16 @@ const {
 const { getFunFact } = require('./../helper/getFunFact');
 
 exports.classifyNumber = catchAsync(async (req, res, next) => {
-  const { number } = req.query;
+  // Extract the number from the query parameters
+  const number = req.query.number;
 
-  if (!number || isNaN(number) || !Number.isInteger(Number(number))) {
-    return res.status(400).json({ number: num, error: true });
+  // Validate input: Check if the number is a valid integer
+  if (isNaN(number)) {
+    return res.status(400).json({
+      number,
+      error: true,
+    });
   }
-
-  const num = parseInt(number);
 
   // Calculate properties
   const prime = isPrime(num);
@@ -27,9 +30,9 @@ exports.classifyNumber = catchAsync(async (req, res, next) => {
 
   // Determine properties
   let properties = [];
-  if (armstrong) properties.push('armstrong');
-  if (num % 2 === 0) properties.push('even');
-  else properties.push('odd');
+  // Check Armstrong and odd/even properties
+  if (isArmstrong(num)) result.properties.push('armstrong');
+  properties.push(num % 2 === 0 ? 'even' : 'odd');
 
   // Send the response
   res.status(200).json({
