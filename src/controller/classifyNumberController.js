@@ -34,7 +34,7 @@ exports.classifyNumber = catchAsync(async (req, res, next) => {
   else properties.push('odd');
 
   res.status(200).json({
-    number: number,
+    number: num,
     is_prime: prime,
     is_perfect: perfect,
     properties,
