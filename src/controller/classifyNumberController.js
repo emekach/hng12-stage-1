@@ -11,17 +11,17 @@ const { getFunFact } = require('./../helper/getFunFact');
 
 exports.classifyNumber = catchAsync(async (req, res, next) => {
   const { number } = req.query;
-  //   console.log(req.query);
-  //   console.log(number);
 
-  if (isNaN(number) || number === undefined) {
+  // Input validation
+  if (!number || !/^-?\d+$/.test(number)) {
     return res.status(400).json({
-      number: number,
+      number: number || 'null',
       error: true,
     });
   }
 
-  const num = Number(number);
+  const num = parseInt(number, 10);
+
   const prime = isPrime(num);
   const perfect = isPerfect(num);
   const armstrong = isArmstrong(num);
