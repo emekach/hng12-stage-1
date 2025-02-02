@@ -25,6 +25,7 @@ exports.isPerfect = (num) => {
 };
 
 exports.isArmstrong = (num) => {
+  if (num < 0) return false; // Add check for negative numbers
   const digits = String(num).split('');
   const power = digits.length;
   const sum = digits.reduce(
