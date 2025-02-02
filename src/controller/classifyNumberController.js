@@ -16,7 +16,7 @@ exports.classifyNumber = catchAsync(async (req, res, next) => {
 
   if (isNaN(number) || number === undefined) {
     return res.status(400).json({
-      number: 'alphabet',
+      number: number,
       error: true,
     });
   }
