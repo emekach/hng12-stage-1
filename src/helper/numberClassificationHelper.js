@@ -1,4 +1,4 @@
-exports.isPrime = (num) => {
+exports.isPrime = (n) => {
   if (n < 2) return false;
   for (let i = 2; i * i <= n; i++) {
     if (n % i === 0) return false;
@@ -6,7 +6,7 @@ exports.isPrime = (num) => {
   return true;
 };
 
-exports.isPerfect = (num) => {
+exports.isPerfect = (n) => {
   if (n <= 1) return false;
 
   let sum = 1;
