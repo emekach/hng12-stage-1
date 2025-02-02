@@ -9,7 +9,7 @@ const classifyNumber = require('./routes/classifyNumber');
 const app = express();
 
 app.use(cors());
-app.use(limiter);
+// app.use(limiter);
 app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: '15kb' }));
