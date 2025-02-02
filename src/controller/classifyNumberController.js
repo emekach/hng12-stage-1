@@ -18,19 +18,23 @@ exports.classifyNumber = catchAsync(async (req, res, next) => {
       error: true,
     });
   }
+
   const num = parseInt(number, 10);
 
+  // Calculate properties
   const prime = isPrime(num);
   const perfect = isPerfect(num);
   const armstrong = isArmstrong(num);
   const digitSum = getDigitSum(num);
-  const funFact = await getFunFact(num);
+  const funFact = await getFunFact(num, armstrong);
 
+  // Determine properties
   let properties = [];
   if (armstrong) properties.push('armstrong');
   if (num % 2 === 0) properties.push('even');
   else properties.push('odd');
 
+  // Send the response
   res.status(200).json({
     number: num,
     is_prime: prime,
