@@ -23,7 +23,7 @@ This is a simple API that takes a number as input and returns various mathematic
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) installed on your machine.
-- A modern code editor (e.g., VSCode).
+- A modern code editor (e.g. VSCode).
 
 ### Steps
 
