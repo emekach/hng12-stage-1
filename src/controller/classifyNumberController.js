@@ -14,7 +14,7 @@ exports.classifyNumber = catchAsync(async (req, res, next) => {
 
   // Validate input
   if (!number || isNaN(number) || !Number.isInteger(Number(number))) {
-    return res.status(400).json({ number: num, error: true });
+    return res.status(400).json({ number: number, error: true });
   }
 
   const num = parseInt(number);
