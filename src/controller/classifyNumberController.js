@@ -10,19 +10,20 @@ const {
 const { getFunFact } = require('./../helper/getFunFact');
 
 exports.classifyNumber = catchAsync(async (req, res, next) => {
-  const number = req.query.number;
+  // Get the first 'number' parameter (even if there are multiple in the query)
+  const number = Array.isArray(req.query.number)
+    ? req.query.number[0]
+    : req.query.number;
 
-  // Validate input: Only one 'number' query parameter should be present
-  if (
-    !number ||
-    Array.isArray(number) ||
-    isNaN(number) ||
-    !Number.isInteger(Number(number))
-  ) {
-    return res.status(400).json({
-      number: number,
-      error: true,
-    });
+  // Validate input
+  if (!number || isNaN(number) || !Number.isInteger(Number(number))) {
+    return res
+      .status(400)
+      .json({
+        number: number,
+        error: true,
+        message: 'Invalid number input or multiple parameters found',
+      });
   }
 
   const num = parseInt(number);
