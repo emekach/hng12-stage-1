@@ -29,7 +29,7 @@ exports.classifyNumber = catchAsync(async (req, res, next) => {
   // Determine properties
   let properties = [];
   // Check Armstrong and odd/even properties
-  if (isArmstrong(num)) result.properties.push('armstrong');
+  if (isArmstrong(num)) properties.push('armstrong');
   properties.push(num % 2 === 0 ? 'even' : 'odd');
 
   // Send the response
