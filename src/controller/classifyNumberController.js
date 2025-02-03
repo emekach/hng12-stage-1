@@ -14,6 +14,7 @@ exports.classifyNumber = catchAsync(async (req, res, next) => {
     ? req.query.number[0]
     : req.query.number;
 
+  console.log('Received number:', number);
   // Input Validation
   if (isNaN(number) || !Number.isInteger(Number(number))) {
     return res.status(400).json({
@@ -22,7 +23,7 @@ exports.classifyNumber = catchAsync(async (req, res, next) => {
     });
   }
 
-  const num = Number(number);
+  const num = parseInt(number);
 
   // Calculate properties
   const prime = isPrime(num);
