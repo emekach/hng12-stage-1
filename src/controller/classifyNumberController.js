@@ -39,12 +39,15 @@ exports.classifyNumber = catchAsync(async (req, res, next) => {
   properties.push(num % 2 === 0 ? 'even' : 'odd');
 
   // Send the response
-  res.status(200).json({
+  const response = {
     number: num,
     is_prime: prime,
     is_perfect: perfect,
     properties,
     digit_sum: digitSum,
     fun_fact: funFact,
-  });
+  };
+
+  console.log("Response object:", response); // Debugging line
+  res.status(200).json(response);
 });
