@@ -10,14 +10,11 @@ const {
 const { getFunFact } = require('./../helper/getFunFact');
 
 exports.classifyNumber = catchAsync(async (req, res, next) => {
-  const { number } = req.query;
+  const number = req.query.number;
 
   // Validate input
-  if (!number || Array.isArray(number) || isNaN(number)) {
-    return res.status(400).json({
-      number: number,
-      error: true,
-    });
+  if (!number || isNaN(number) || !Number.isInteger(Number(number))) {
+    return res.status(400).json({ number: num, error: true });
   }
 
   const num = parseInt(number);
