@@ -1,5 +1,5 @@
 exports.isPrime = (num) => {
-  if (num <= 1) return false;
+  if (num < 2) return false;
   for (let i = 2; i <= Math.sqrt(num); i++) {
     if (num % i === 0) return false;
   }
@@ -19,7 +19,7 @@ exports.isPerfect = (num) => {
 };
 
 exports.isArmstrong = (num) => {
-  const digits = num.toString().split('');
+  const digits = String(num).split('');
   const sum = digits.reduce(
     (acc, digit) => acc + Math.pow(Number(digit), digits.length),
     0
@@ -28,8 +28,9 @@ exports.isArmstrong = (num) => {
 };
 
 exports.getDigitSum = (num) => {
-  return num
-    .toString()
+  // Handle negative numbers by taking their absolute value
+  const absoluteNum = Math.abs(num);
+  return String(absoluteNum)
     .split('')
-    .reduce((sum, digit) => sum + Number(digit), 0);
+    .reduce((acc, digit) => acc + Number(digit), 0);
 };
